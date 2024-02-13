@@ -7,10 +7,16 @@ const dotenv = require("dotenv");
 dotenv.config();
 app.use(express.json());
 
+//when not using Docker
+//let corspolicy = {
+//    origin:"http://localhost:3000"
+//}
 
-let corspolicy = {
-    origin:"http://localhost:3000"
-}
+//For clone and pull to Docker, a Dockerfile specifies the path
+ let corspolicy = {
+     origin: process.env.FrontendURI
+ }
+
 app.use(cors(corspolicy));
 
 
